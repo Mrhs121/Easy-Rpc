@@ -5,6 +5,7 @@
 ------
 网络：Netty  
 服务发现：Zookeeper  
+序列化：Avro
 
 合作
 ----
