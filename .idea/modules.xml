@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Easy-Rpc.iml" filepath="$PROJECT_DIR$/.idea/Easy-Rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyrpc/easyrpc.iml" filepath="$PROJECT_DIR$/easyrpc/easyrpc.iml" />
+    </modules>
+  </component>
+</project>
