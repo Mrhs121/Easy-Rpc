@@ -4,4 +4,4 @@
 技术选型
 ------
 网络：Netty  
-服务发现：zookeeper  
+服务发现：Zookeeper  
