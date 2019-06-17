@@ -6,6 +6,7 @@ import com.hs.easyrpc.services.HelloService;
 import java.net.InetSocketAddress;
 
 public class Test {
+
     public static void main(String[] args) {
         System.out.println("Easy-Rpc First Test!");
         HelloService service = SimpleRpcClinet.getRemoteProxyObj(HelloService.class, new InetSocketAddress("localhost", 8088));

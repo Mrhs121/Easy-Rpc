@@ -43,6 +43,8 @@ public class SimpleServerImpl implements SimpleServer {
 
     @Override
     public void register(Class serviceInterface, Class impl) {
+        // 服务注册准备写成动态的，可以动态的上线和下线服务
+        // 服务信息存储在zk中
         serviceRegistry.put(serviceInterface.getName(),impl);
     }
 
