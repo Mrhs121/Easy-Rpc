@@ -1,11 +1,11 @@
-package com.hs.easyrpc.test;
+package com.hs.easyrpc.demo.test;
 
-import com.hs.easyrpc.easyrpcserver.SimpleServer;
-import com.hs.easyrpc.easyrpcserver.impl.EasyRpcServerImpl;
-import com.hs.easyrpc.services.HelloService;
-import com.hs.easyrpc.services.LoginService;
-import com.hs.easyrpc.services.impl.HelloServiceImpl;
-import com.hs.easyrpc.services.impl.LoginServiceImpl;
+import com.hs.easyrpc.core.easyrpcserver.SimpleServer;
+import com.hs.easyrpc.core.easyrpcserver.impl.EasyRpcServerImpl;
+import com.hs.easyrpc.demo.services.HelloService;
+import com.hs.easyrpc.demo.services.LoginService;
+import com.hs.easyrpc.demo.services.impl.HelloServiceImpl;
+import com.hs.easyrpc.demo.services.impl.LoginServiceImpl;
 
 import java.io.IOException;
 

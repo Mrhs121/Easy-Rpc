@@ -1,7 +1,7 @@
 package com.hs.demo;
 //
-//import com.hs.easyrpc.common.CommonStrings;
-//import com.hs.easyrpc.model.User;
+//import com.hs.easyrpc.core.common.CommonStrings;
+//import com.hs.easyrpc.demo.model.User;
 //import org.apache.avro.file.DataFileReader;
 //import org.apache.avro.file.DataFileWriter;
 //import org.apache.avro.io.DatumReader;

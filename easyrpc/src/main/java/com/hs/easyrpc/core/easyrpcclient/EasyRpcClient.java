@@ -1,4 +1,4 @@
-package com.hs.easyrpc.easyrpcclient;
+package com.hs.easyrpc.core.easyrpcclient;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -24,6 +24,7 @@ public class EasyRpcClient {
 
                             // 3.将远程服务调用所需的接口类、方法名、参数列表等编码后发送给服务提供者
                             output = new ObjectOutputStream(socket.getOutputStream());
+                            // 此处到时候改成 RpcRequest 消息
                             output.writeUTF(serviceInterface.getName());
                             output.writeUTF(method.getName());
                             output.writeObject(method.getParameterTypes());

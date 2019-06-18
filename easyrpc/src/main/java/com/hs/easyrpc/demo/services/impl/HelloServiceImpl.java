@@ -1,6 +1,6 @@
-package com.hs.easyrpc.services.impl;
+package com.hs.easyrpc.demo.services.impl;
 
-import com.hs.easyrpc.services.HelloService;
+import com.hs.easyrpc.demo.services.HelloService;
 
 public class HelloServiceImpl implements HelloService {
     @Override

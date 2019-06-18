@@ -30,6 +30,11 @@
              <artifactId>slf4j-nop</artifactId>
              <version>1.7.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-ipc</artifactId>
+            <version>1.8.2</version>
+        </dependency>
 
     </dependencies>
 
@@ -52,6 +57,76 @@
                 </execution>
             </executions>
         </plugin>
+
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>1.8.2</version>
+                <!--global plugin configuration which used for run goal separately-->
+                <configuration>
+                    <!--The Avro source directory for schema, protocol and IDL files.-->
+                    <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                    <!--The directory where Avro writes code-generated sources. IMPORTANT!! -->
+                    <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                    <!--The input directory containing any Avro files used in testing.-->
+                    <testSourceDirectory>${project.basedir}/src/test/avro/</testSourceDirectory>
+                    <!--The output directory where Avro writes code-generated files for your testing purposes.-->
+                    <testOutputDirectory>${project.basedir}/src/test/java/</testOutputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!--
+                        IMPORTANT: Because this configuration is set in the execution with phase `generate-sources`.
+                        So only run compile or package which include this phase will apply this configuration.
+                        So if only make this configuration, run `mvn avro:schema` will only generate to the target
+                        folder with default configuration.
+                        -->
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                            <!--If you want to generate other code, need add more goals-->
+                            <goal>protocol</goal>
+                            <goal>idl-protocol</goal>
+                        </goals>
+                        <!---->
+                        <configuration>
+                            <!--default is ${basedir}/src/main/avro
+                            The Avro source directory for schema, protocol and IDL files.-->
+                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+
+                            <!--default is ${project.build.directory}/generated-sources/avro
+                             The directory where Avro writes code-generated sources. IMPORTANT!! -->
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+
+                            <!--default is ${basedir}/src/test/avro
+                            The input directory containing any Avro files used in testing.-->
+                            <testSourceDirectory>${project.basedir}/src/test/avro/</testSourceDirectory>
+
+                            <!--default is ${project.build.directory}/generated-test-sources/avro
+                            The output directory where Avro writes code-generated files for your testing purposes.-->
+                            <testOutputDirectory>${project.basedir}/src/test/java/</testOutputDirectory>
+
+                            <!--fieldVisibility PUBLIC_DEPRECATED
+                            Determines the accessibility of fields (e.g. whether they are public or private).
+                            Must be one of PUBLIC, PUBLIC_DEPRECATED or PRIVATE. PUBLIC_DEPRECATED merely
+                            adds a deprecated annotation to each field, e.g. "@Deprecated public long time".-->
+
+
+                            <!--In addition, the includes and testIncludes configurables can also be used to
+                            specify alternative file extensions to the defaults, which are **/*.avsc, **/*.avpr
+                            and **/*.avdl for schema, protocol and IDL files respectively.-->
+                            <!--<includes>
+                              <include>**/*.avro</include>
+                            </includes>
+                            <testIncludes>
+                              <testInclude>**/*.test</testInclude>
+                            </testIncludes>-->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

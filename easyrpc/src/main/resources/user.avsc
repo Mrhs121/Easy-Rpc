@@ -1,5 +1,5 @@
 {
-    "namespace": "com.hs.easyrpc.model",
+    "namespace": "com.hs.easyrpc.demo.model",
     "type": "record",
     "name": "User",
     "fields": [

@@ -1,4 +1,4 @@
-package com.hs.easyrpc.common;
+package com.hs.easyrpc.core.common;
 
 public class CommonStrings {
 

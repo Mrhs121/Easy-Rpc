@@ -1,6 +1,6 @@
-package com.hs.easyrpc.easyrpcserver.impl;
+package com.hs.easyrpc.core.easyrpcserver.impl;
 
-import com.hs.easyrpc.easyrpcserver.SimpleServer;
+import com.hs.easyrpc.core.easyrpcserver.SimpleServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

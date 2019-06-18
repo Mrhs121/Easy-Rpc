@@ -1,0 +1,24 @@
+{
+  "namespace": "com.hs.easyrpc.demo.model.protocol",
+  "protocol": "AvroHelloWorld",
+  "doc": "Protocol Greetings",
+
+  "types": [
+    {"name": "Greeting", "type": "record", "fields": [
+      {"name": "message", "type": "string"},
+              {
+                  "name": "password",
+                  "type": "string"
+              }
+      ]
+    }
+  ],
+
+  "messages": {
+    "hello": {
+      "doc": "Say hello.",
+      "request": [{"name": "greeting", "type": "Greeting" }],
+      "response": "Greeting"
+    }
+  }
+}

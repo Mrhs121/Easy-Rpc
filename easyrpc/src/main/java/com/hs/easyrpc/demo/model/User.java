@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.hs.easyrpc.model;
+package com.hs.easyrpc.demo.model;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class User extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -2397651294769270512L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"User\",\"namespace\":\"com.hs.easyrpc.model\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"password\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"User\",\"namespace\":\"com.hs.easyrpc.demo.model\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"password\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -127,8 +127,8 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
    * Creates a new User RecordBuilder.
    * @return A new User RecordBuilder
    */
-  public static com.hs.easyrpc.model.User.Builder newBuilder() {
-    return new com.hs.easyrpc.model.User.Builder();
+  public static com.hs.easyrpc.demo.model.User.Builder newBuilder() {
+    return new com.hs.easyrpc.demo.model.User.Builder();
   }
 
   /**
@@ -136,8 +136,8 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
    * @param other The existing builder to copy.
    * @return A new User RecordBuilder
    */
-  public static com.hs.easyrpc.model.User.Builder newBuilder(com.hs.easyrpc.model.User.Builder other) {
-    return new com.hs.easyrpc.model.User.Builder(other);
+  public static com.hs.easyrpc.demo.model.User.Builder newBuilder(com.hs.easyrpc.demo.model.User.Builder other) {
+    return new com.hs.easyrpc.demo.model.User.Builder(other);
   }
 
   /**
@@ -145,8 +145,8 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
    * @param other The existing instance to copy.
    * @return A new User RecordBuilder
    */
-  public static com.hs.easyrpc.model.User.Builder newBuilder(com.hs.easyrpc.model.User other) {
-    return new com.hs.easyrpc.model.User.Builder(other);
+  public static com.hs.easyrpc.demo.model.User.Builder newBuilder(com.hs.easyrpc.demo.model.User other) {
+    return new com.hs.easyrpc.demo.model.User.Builder(other);
   }
 
   /**
@@ -167,7 +167,7 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.hs.easyrpc.model.User.Builder other) {
+    private Builder(com.hs.easyrpc.demo.model.User.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.name)) {
         this.name = data().deepCopy(fields()[0].schema(), other.name);
@@ -183,7 +183,7 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
      * Creates a Builder by copying an existing User instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.hs.easyrpc.model.User other) {
+    private Builder(com.hs.easyrpc.demo.model.User other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.name)) {
         this.name = data().deepCopy(fields()[0].schema(), other.name);
@@ -208,7 +208,7 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.hs.easyrpc.model.User.Builder setName(java.lang.CharSequence value) {
+    public com.hs.easyrpc.demo.model.User.Builder setName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.name = value;
       fieldSetFlags()[0] = true;
@@ -228,7 +228,7 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
       * Clears the value of the 'name' field.
       * @return This builder.
       */
-    public com.hs.easyrpc.model.User.Builder clearName() {
+    public com.hs.easyrpc.demo.model.User.Builder clearName() {
       name = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -247,7 +247,7 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
       * @param value The value of 'password'.
       * @return This builder.
       */
-    public com.hs.easyrpc.model.User.Builder setPassword(java.lang.CharSequence value) {
+    public com.hs.easyrpc.demo.model.User.Builder setPassword(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.password = value;
       fieldSetFlags()[1] = true;
@@ -267,7 +267,7 @@ public class User extends org.apache.avro.specific.SpecificRecordBase implements
       * Clears the value of the 'password' field.
       * @return This builder.
       */
-    public com.hs.easyrpc.model.User.Builder clearPassword() {
+    public com.hs.easyrpc.demo.model.User.Builder clearPassword() {
       password = null;
       fieldSetFlags()[1] = false;
       return this;

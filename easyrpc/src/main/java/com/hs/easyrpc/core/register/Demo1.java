@@ -1,4 +1,4 @@
-package com.hs.easyrpc.register;
+package com.hs.easyrpc.core.register;
 
 public class Demo1 {
     public static void main(String[] args) {

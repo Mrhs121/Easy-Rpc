@@ -1,4 +1,4 @@
-package com.hs.easyrpc.message;
+package com.hs.easyrpc.core.message;
 
 public class Demo1 {
     public static void main(String[] args) {

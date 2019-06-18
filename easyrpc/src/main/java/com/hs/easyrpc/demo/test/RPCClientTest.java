@@ -1,8 +1,8 @@
-package com.hs.easyrpc.test;
+package com.hs.easyrpc.demo.test;
 
-import com.hs.easyrpc.easyrpcclient.EasyRpcClient;
-import com.hs.easyrpc.model.User;
-import com.hs.easyrpc.services.LoginService;
+import com.hs.easyrpc.core.easyrpcclient.EasyRpcClient;
+import com.hs.easyrpc.demo.model.User;
+import com.hs.easyrpc.demo.services.LoginService;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -14,7 +14,9 @@ public class RPCClientTest {
 //        System.out.println(service.Say("huang sheng"));
         LoginService loginservice = EasyRpcClient.getRemoteProxyObj(LoginService.class, new InetSocketAddress("localhost", 8088));
         User user1 = new User("hs","hs");
-        System.out.println(loginservice.login(user1));
+        for(int i =1;i<20;i++){
+            System.out.println(loginservice.login(user1));
+        }
 //        System.out.println(loginservice.login(new User("hs","hs2")));
     }
 }

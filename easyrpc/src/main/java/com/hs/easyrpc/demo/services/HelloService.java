@@ -1,4 +1,4 @@
-package com.hs.easyrpc.services;
+package com.hs.easyrpc.demo.services;
 
 public interface HelloService {
     public String Say(String msg);

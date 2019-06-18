@@ -1,7 +1,7 @@
-package com.hs.easyrpc.test;
+package com.hs.easyrpc.demo.test;
 
-import com.hs.easyrpc.easyrpcclient.EasyRpcClient;
-import com.hs.easyrpc.services.HelloService;
+import com.hs.easyrpc.core.easyrpcclient.EasyRpcClient;
+import com.hs.easyrpc.demo.services.HelloService;
 
 import java.net.InetSocketAddress;
 
