@@ -2,8 +2,10 @@ package com.hs.easyrpc.demo.test;
 
 import com.hs.easyrpc.core.easyrpcserver.SimpleServer;
 import com.hs.easyrpc.core.easyrpcserver.impl.EasyRpcServerImpl;
+import com.hs.easyrpc.demo.model.protocol.AvroHelloWorld;
 import com.hs.easyrpc.demo.services.HelloService;
 import com.hs.easyrpc.demo.services.LoginService;
+import com.hs.easyrpc.demo.services.impl.AvroHelloWorldImpl;
 import com.hs.easyrpc.demo.services.impl.HelloServiceImpl;
 import com.hs.easyrpc.demo.services.impl.LoginServiceImpl;
 
@@ -14,6 +16,7 @@ public class RPCServerTest {
         SimpleServer serviceServer = new EasyRpcServerImpl(8088);
         serviceServer.register(HelloService.class, HelloServiceImpl.class);
         serviceServer.register(LoginService.class, LoginServiceImpl.class);
+        serviceServer.register(AvroHelloWorld.class, AvroHelloWorldImpl.class);
         serviceServer.start();
     }
 }
