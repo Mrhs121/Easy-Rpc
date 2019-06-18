@@ -1,4 +1,4 @@
-package com.hs.easyrpc.server;
+package com.hs.easyrpc.easyrpcserver;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
-package com.hs.easyrpc.server.impl;
+package com.hs.easyrpc.easyrpcserver.impl;
 
-import com.hs.easyrpc.server.SimpleServer;
+import com.hs.easyrpc.easyrpcserver.SimpleServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SimpleServerImpl implements SimpleServer {
+public class EasyRpcServerImpl implements SimpleServer {
 
     private  ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -25,7 +25,7 @@ public class SimpleServerImpl implements SimpleServer {
 
     private ServerSocket server;
 
-    public SimpleServerImpl(int port){
+    public EasyRpcServerImpl(int port){
         this.port = port;
     }
 
@@ -40,7 +40,6 @@ public class SimpleServerImpl implements SimpleServer {
             e.printStackTrace();
         }
     }
-
     @Override
     public void register(Class serviceInterface, Class impl) {
         // 服务注册准备写成动态的，可以动态的上线和下线服务
