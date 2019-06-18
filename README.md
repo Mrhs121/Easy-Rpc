@@ -1,5 +1,5 @@
 # Easy-Rpc
-一个简易的高效的Rpc框架
+一个轻量的并且高效的Rpc框架
 
   架构：  
   ![send](https://github.com/Mrhs121/Easy-Rpc/blob/master/pictures/structure.jpeg)
