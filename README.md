@@ -8,8 +8,8 @@
 技术选型
 ------
 网络：Netty  
-服务发现：Zookeeper  
-序列化：Avro或ProtocolBuffers或者通过参数控制
+服务注册：Zookeeper  
+序列化：Avro或ProtocolBuffers或kryo或者通过参数控制
 
 合作
 ----
