@@ -1,7 +1,7 @@
 package com.hs.easyrpc.core.easyrpcserver.impl;
 
 import com.hs.easyrpc.core.common.CommonStrings;
-import com.hs.easyrpc.core.easyrpcserver.SimpleServer;
+import com.hs.easyrpc.core.easyrpcserver.RpcServer;
 import com.hs.easyrpc.core.protocol.RpcRequest;
 import com.hs.easyrpc.core.protocol.RpcResponse;
 
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class EasyRpcServerImpl implements SimpleServer {
+public class SimpleSocketServer implements RpcServer {
 
     private  ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -29,7 +29,7 @@ public class EasyRpcServerImpl implements SimpleServer {
     private ServerSocket server;
 
     // 需要再添加一个ip地址
-    public EasyRpcServerImpl(int port){
+    public SimpleSocketServer(int port){
         this.port = port;
     }
 
