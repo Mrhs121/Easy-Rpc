@@ -1,5 +1,6 @@
 package com.hs.easyrpc.core.easyrpcserver.impl;
 
+import com.hs.easyrpc.core.common.CommonStrings;
 import com.hs.easyrpc.core.easyrpcserver.SimpleServer;
 import com.hs.easyrpc.core.protocol.RpcRequest;
 import com.hs.easyrpc.core.protocol.RpcResponse;
@@ -45,8 +46,8 @@ public class EasyRpcServerImpl implements SimpleServer {
     }
     @Override
     public void register(Class serviceInterface, Class impl) {
-        // 服务注册准备写成动态的，可以动态的上线和下线服务
-        // 服务信息存储在zk中
+        // 服务注册准备写成动态的，可以动态的上线和下线服务 zk
+        // 后面会将服务的信息注册在zk中
         System.out.println("注册 "+serviceInterface.getCanonicalName());
         serviceRegistry.put(serviceInterface.getName(),impl);
     }
@@ -87,7 +88,7 @@ public class EasyRpcServerImpl implements SimpleServer {
             ObjectInputStream input = null;
             ObjectOutputStream output = null;
             try {
-                // 2.将客户端发送的码流反序列化成对象，反射调用服务实现者，获取执行结果
+
                 input = new ObjectInputStream(clent.getInputStream());
                 RpcRequest request = (RpcRequest)input.readObject();
 
@@ -104,10 +105,10 @@ public class EasyRpcServerImpl implements SimpleServer {
                 }
                 Method method = serviceClass.getMethod(methodName, parameterTypes);
                 Object result = method.invoke(serviceClass.newInstance(), arguments);
+                RpcResponse response = new RpcResponse(request.getRequestId(), CommonStrings.RESPONSE_OK,result);
 
-                // 3.将执行结果反序列化，通过socket发送给客户端
                 output = new ObjectOutputStream(clent.getOutputStream());
-                output.writeObject(result);
+                output.writeObject(response);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {

@@ -1,6 +1,8 @@
 package com.hs.easyrpc.core.protocol;
 
-public class RpcResponse {
+import java.io.Serializable;
+
+public class RpcResponse implements Serializable {
     private String requestId;
     private String error;
     private Object result;
