@@ -1,6 +1,8 @@
 package com.hs.easyrpc.core.easyrpcserver.impl;
 
 import com.hs.easyrpc.core.easyrpcserver.SimpleServer;
+import com.hs.easyrpc.core.protocol.RpcRequest;
+import com.hs.easyrpc.core.protocol.RpcResponse;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,6 +27,7 @@ public class EasyRpcServerImpl implements SimpleServer {
 
     private ServerSocket server;
 
+    // 需要再添加一个ip地址
     public EasyRpcServerImpl(int port){
         this.port = port;
     }
@@ -44,6 +47,7 @@ public class EasyRpcServerImpl implements SimpleServer {
     public void register(Class serviceInterface, Class impl) {
         // 服务注册准备写成动态的，可以动态的上线和下线服务
         // 服务信息存储在zk中
+        System.out.println("注册 "+serviceInterface.getCanonicalName());
         serviceRegistry.put(serviceInterface.getName(),impl);
     }
 
@@ -85,10 +89,15 @@ public class EasyRpcServerImpl implements SimpleServer {
             try {
                 // 2.将客户端发送的码流反序列化成对象，反射调用服务实现者，获取执行结果
                 input = new ObjectInputStream(clent.getInputStream());
-                String serviceName = input.readUTF();
-                String methodName = input.readUTF();
-                Class<?>[] parameterTypes = (Class<?>[]) input.readObject();
-                Object[] arguments = (Object[]) input.readObject();
+                RpcRequest request = (RpcRequest)input.readObject();
+
+                String serviceName = request.getServiceName();
+                String methodName = request.getMethodName();
+                Class<?>[] parameterTypes = (Class<?>[]) request.getParameterTypes();
+                Object[] arguments = (Object[]) request.getParameters();
+
+
+
                 Class serviceClass = serviceRegistry.get(serviceName);
                 if (serviceClass == null) {
                     throw new ClassNotFoundException(serviceName + " not found");

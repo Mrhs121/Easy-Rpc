@@ -1,0 +1,27 @@
+{
+    "namespace": "com.hs.easyrpc.core.protocol",
+    "type": "record",
+    "name": "RpcRequest",
+    "fields": [
+        {
+            "name": "requestId",
+            "type": "string"
+        },
+        {
+            "name": "className",
+            "type": "string"
+        },
+        {
+            "name": "methodName",
+            "type": "string"
+        },
+
+        {
+            "name":"parameters",
+            "type":{"type":"array","items":"Object"}
+        }
+
+    ]
+}
+
+
