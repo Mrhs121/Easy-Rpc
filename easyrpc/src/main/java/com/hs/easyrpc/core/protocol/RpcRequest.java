@@ -1,15 +1,17 @@
 package com.hs.easyrpc.core.protocol;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 // 将这个序列化替换成 avro或者protobuffer的序列化
-public class RpcRequest implements Serializable {
+public class RpcRequest implements Serializable{
 
     public String requestId;
     public String serviceName;
     public String methodName;
     Class<?>[] parameterTypes;
     Object[] parameters;
+
 
     public RpcRequest(){}
 
@@ -60,6 +62,17 @@ public class RpcRequest implements Serializable {
 
     public void setParameters(Object[] parameters) {
         this.parameters = parameters;
+    }
+
+    @Override
+    public String toString() {
+        return "RpcRequest{" +
+                "requestId='" + requestId + '\'' +
+                ", serviceName='" + serviceName + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", parameterTypes=" + Arrays.toString(parameterTypes) +
+                ", parameters=" + Arrays.toString(parameters) +
+                '}';
     }
 }
 

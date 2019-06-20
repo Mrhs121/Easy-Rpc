@@ -4,10 +4,9 @@ import com.hs.easyrpc.core.common.CommonStrings;
 import com.hs.easyrpc.core.easyrpcserver.RpcServer;
 import com.hs.easyrpc.core.protocol.RpcRequest;
 import com.hs.easyrpc.core.protocol.RpcResponse;
+import com.hs.easyrpc.core.utils.SerializeUtil;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -78,19 +77,32 @@ public class SimpleSocketServer implements RpcServer {
         }
     }
     private static class ServiceTask implements Runnable {
-        Socket clent = null;
+        Socket client = null;
 
         public ServiceTask(Socket client) {
-            this.clent = client;
+            this.client = client;
         }
 
         public void run() {
             ObjectInputStream input = null;
             ObjectOutputStream output = null;
+            RpcResponse response = null;
             try {
 
-                input = new ObjectInputStream(clent.getInputStream());
-                RpcRequest request = (RpcRequest)input.readObject();
+//                input = new ObjectInputStream(client.getInputStream());
+//                RpcRequest request = (RpcRequest)input.readObject();
+                InputStream inputStream= this.client.getInputStream();//
+                input = new ObjectInputStream(inputStream);
+
+                DataInputStream dis = new DataInputStream(inputStream);
+
+                byte[] data = new byte[1024];
+                System.out.println(data.length);
+                int size = dis.read(data);
+//                byte[] data2 =  new byte[1024];
+//                System.arraycopy(data,4,data2,0,size);
+//                System.out.println(data2.length);
+                RpcRequest request = SerializeUtil.decodeByte(data,RpcRequest.class);
 
                 String serviceName = request.getServiceName();
                 String methodName = request.getMethodName();
@@ -101,14 +113,19 @@ public class SimpleSocketServer implements RpcServer {
 
                 Class serviceClass = serviceRegistry.get(serviceName);
                 if (serviceClass == null) {
+                    response = new RpcResponse(request.getRequestId(), serviceName + " not found",null);
+                    output = new ObjectOutputStream(client.getOutputStream());
+                    output.writeObject(response);
                     throw new ClassNotFoundException(serviceName + " not found");
                 }
                 Method method = serviceClass.getMethod(methodName, parameterTypes);
-                Object result = method.invoke(serviceClass.newInstance(), arguments);
-                RpcResponse response = new RpcResponse(request.getRequestId(), CommonStrings.RESPONSE_OK,result);
 
-                output = new ObjectOutputStream(clent.getOutputStream());
+                Object result = method.invoke(serviceClass.newInstance(), arguments);
+                response = new RpcResponse(request.getRequestId(), CommonStrings.RESPONSE_OK,result);
+                System.out.println(response.toString());
+                output = new ObjectOutputStream(client.getOutputStream());
                 output.writeObject(response);
+
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -126,9 +143,9 @@ public class SimpleSocketServer implements RpcServer {
                         e.printStackTrace();
                     }
                 }
-                if (clent != null) {
+                if (client != null) {
                     try {
-                        clent.close();
+                        client.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
