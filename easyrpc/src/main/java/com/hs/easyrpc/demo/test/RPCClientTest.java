@@ -22,17 +22,17 @@ public class RPCClientTest {
 //                System.out.println(result.toString());
 //        }
 
-//        SocketInvocationHandler socketInvocationHandler1 = new SocketInvocationHandler(HelloService.class,new InetSocketAddress("localhost", 8088));
-//        HelloService helloService = RpcClient.getRemoteProxyObj(HelloService.class,socketInvocationHandler1);
-//        for(int i =1;i<10;i++){
-//            System.out.println(helloService.Say("huangsheng"));
-//        }
-
-        SocketInvocationHandler socketInvocationHandler2 = new SocketInvocationHandler(LoginService.class,new InetSocketAddress("localhost", 8088));
-        LoginService loginService = RpcClient.getRemoteProxyObj(LoginService.class,socketInvocationHandler2);
+        SocketInvocationHandler socketInvocationHandler1 = new SocketInvocationHandler(HelloService.class,new InetSocketAddress("localhost", 8088));
+        HelloService helloService = RpcClient.getRemoteProxyObj(HelloService.class,socketInvocationHandler1);
         for(int i =1;i<10;i++){
-            System.out.println(loginService.login(new User("huangsheng",""+i)));
+            System.out.println(helloService.aaa(new User("huangsheng",""+i)));
         }
+//
+//        SocketInvocationHandler socketInvocationHandler2 = new SocketInvocationHandler(LoginService.class,new InetSocketAddress("localhost", 8088));
+//        LoginService loginService = RpcClient.getRemoteProxyObj(LoginService.class,socketInvocationHandler2);
+//        for(int i =1;i<10;i++){
+//            System.out.println(loginService.login(new User("huangsheng",""+i)));
+//        }
     }
 
 

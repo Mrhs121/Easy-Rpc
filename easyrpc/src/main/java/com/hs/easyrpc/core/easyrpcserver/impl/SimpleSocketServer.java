@@ -97,7 +97,7 @@ public class SimpleSocketServer implements RpcServer {
                 DataInputStream dis = new DataInputStream(inputStream);
 
                 byte[] data = new byte[1024];
-                System.out.println(data.length);
+//                System.out.println(data.length);
                 int size = dis.read(data);
 //                byte[] data2 =  new byte[1024];
 //                System.arraycopy(data,4,data2,0,size);
@@ -107,6 +107,9 @@ public class SimpleSocketServer implements RpcServer {
                 String serviceName = request.getServiceName();
                 String methodName = request.getMethodName();
                 Class<?>[] parameterTypes = (Class<?>[]) request.getParameterTypes();
+                for(Class c :parameterTypes){
+                    System.out.println(c);
+                }
                 Object[] arguments = (Object[]) request.getParameters();
 
 
@@ -122,7 +125,7 @@ public class SimpleSocketServer implements RpcServer {
 
                 Object result = method.invoke(serviceClass.newInstance(), arguments);
                 response = new RpcResponse(request.getRequestId(), CommonStrings.RESPONSE_OK,result);
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
                 output = new ObjectOutputStream(client.getOutputStream());
                 output.writeObject(response);
 
