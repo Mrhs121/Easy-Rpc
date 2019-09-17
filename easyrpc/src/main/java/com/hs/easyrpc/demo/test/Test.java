@@ -15,10 +15,10 @@ public class Test {
             System.out.println(service.Say(i+" huang sheng "));
         }
 
-                String json = JSON.toJSONString(request);
-        System.out.println(json);
-        RpcRequest q = JSON.parseObject(json,RpcRequest.class);
-        System.out.println(q.toString());
+//        String json = JSON.toJSONString(request);
+//        System.out.println(json);
+//        RpcRequest q = JSON.parseObject(json,RpcRequest.class);
+//        System.out.println(q.toString());
 
     }
 }
