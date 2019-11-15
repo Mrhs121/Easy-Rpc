@@ -11,7 +11,7 @@ public class Test {
 //        System.out.println("test");
 //        System.out.println("test");
 //        System.out.println("Easy-Rpc First Test!");
-//        HelloService service = RpcClient.getProxy(HelloService.class, new InetSocketAddress("localhost", 8088));
+//        HelloService service = EasyRpcClient.getProxy(HelloService.class, new InetSocketAddress("localhost", 8088));
 //        for (int i=0;i<20;i++){
 //            System.out.println(service.Say(i+" huang sheng "));
 //        }

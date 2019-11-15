@@ -13,12 +13,12 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.UUID;
 
-public class SocketInvocationHandler implements InvocationHandler {
+public class SimpleSocketHandler implements InvocationHandler {
 
     public InetSocketAddress addr;
     public Class<?> serviceInterface;
 
-    public SocketInvocationHandler(Class<?> serviceInterface,InetSocketAddress addr){
+    public SimpleSocketHandler(Class<?> serviceInterface, InetSocketAddress addr){
         this.addr = addr;
         this.serviceInterface = serviceInterface;
     }

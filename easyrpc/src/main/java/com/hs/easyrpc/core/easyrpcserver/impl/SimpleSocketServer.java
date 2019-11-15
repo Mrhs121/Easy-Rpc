@@ -1,7 +1,7 @@
 package com.hs.easyrpc.core.easyrpcserver.impl;
 
 import com.hs.easyrpc.core.common.CommonStrings;
-import com.hs.easyrpc.core.easyrpcserver.RpcServer;
+import com.hs.easyrpc.core.easyrpcserver.EasyRpcServer;
 import com.hs.easyrpc.core.protocol.RpcRequest;
 import com.hs.easyrpc.core.protocol.RpcResponse;
 import com.hs.easyrpc.core.utils.SerializeUtil;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SimpleSocketServer implements RpcServer {
+public class SimpleSocketServer implements EasyRpcServer {
 
     private  ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 

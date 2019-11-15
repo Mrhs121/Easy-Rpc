@@ -1,6 +1,6 @@
 package com.hs.easyrpc.demo.test;
 
-import com.hs.easyrpc.core.easyrpcserver.RpcServer;
+import com.hs.easyrpc.core.easyrpcserver.EasyRpcServer;
 import com.hs.easyrpc.core.easyrpcserver.impl.SimpleSocketServer;
 import com.hs.easyrpc.demo.model.protocol.AvroHelloWorld;
 import com.hs.easyrpc.demo.services.HelloService;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class RPCServerTest {
     public static void main(String[] args) throws IOException {
-        RpcServer serviceServer = new SimpleSocketServer(8088);
+        EasyRpcServer serviceServer = new SimpleSocketServer(8088);
         serviceServer.register(HelloService.class, HelloServiceImpl.class);
         serviceServer.register(LoginService.class, LoginServiceImpl.class);
         serviceServer.register(AvroHelloWorld.class, AvroHelloWorldImpl.class);
