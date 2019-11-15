@@ -8,12 +8,13 @@ import com.hs.easyrpc.demo.model.protocol.AvroHelloWorld;
 public class Test {
 
     public static void main(String[] args) {
-        System.out.println("test");
-        System.out.println("Easy-Rpc First Test!");
-        HelloService service = RpcClient.getRemoteProxyObj(HelloService.class, new InetSocketAddress("localhost", 8088));
-        for (int i=0;i<20;i++){
-            System.out.println(service.Say(i+" huang sheng "));
-        }
+//        System.out.println("test");
+//        System.out.println("test");
+//        System.out.println("Easy-Rpc First Test!");
+//        HelloService service = RpcClient.getProxy(HelloService.class, new InetSocketAddress("localhost", 8088));
+//        for (int i=0;i<20;i++){
+//            System.out.println(service.Say(i+" huang sheng "));
+//        }
 
 //        String json = JSON.toJSONString(request);
 //        System.out.println(json);
