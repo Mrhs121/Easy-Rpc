@@ -1,5 +1,7 @@
 package com.hs.easyrpc.core.easyrpcserver.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.hs.easyrpc.core.common.CommonStrings;
 import com.hs.easyrpc.core.easyrpcserver.EasyRpcServer;
 import com.hs.easyrpc.core.protocol.RpcRequest;
@@ -104,15 +106,29 @@ public class SimpleSocketServer implements EasyRpcServer {
 //                System.out.println(data2.length);
                 RpcRequest request = SerializeUtil.decodeByte(data,RpcRequest.class);
 
+
                 String serviceName = request.getServiceName();
                 String methodName = request.getMethodName();
-                Class<?>[] parameterTypes = (Class<?>[]) request.getParameterTypes();
+                System.out.println("length : "+request.getParameterTypes().length+" "+request.getParameters().length);
+                System.out.println("call "+serviceName+" --> "+methodName);
+                Class<?>[] parameterTypes = request.getParameterTypes();
                 for(Class c :parameterTypes){
-                    System.out.println(c);
+                    System.out.println("arg type："+c);
                 }
-                Object[] arguments = (Object[]) request.getParameters();
+                Object[] arguments = request.getParameters();
+                for (Object o : arguments){
+                    System.out.println("obj : "+o.getClass()+ "data : "+o);
+                }
 
-
+//                Object[] newarguments = new Object[request.getParameterTypes().length];
+//                for(int i=0;i<arguments.length;i++){
+//                    if(arguments[i] instanceof  JSONObject) {
+//                        Object parameter = JSON.toJavaObject((JSONObject) arguments[i], parameterTypes[i]);
+//                        newarguments[i] = parameter;
+//                    } else {
+//                        newarguments[i] = arguments[i];
+//                    }
+//                }
 
                 Class serviceClass = serviceRegistry.get(serviceName);
                 if (serviceClass == null) {
@@ -122,8 +138,10 @@ public class SimpleSocketServer implements EasyRpcServer {
                     throw new ClassNotFoundException(serviceName + " not found");
                 }
                 Method method = serviceClass.getMethod(methodName, parameterTypes);
+                System.out.println("method : "+method);
 
                 Object result = method.invoke(serviceClass.newInstance(), arguments);
+
                 response = new RpcResponse(request.getRequestId(), CommonStrings.RESPONSE_OK,result);
                 //System.out.println(response.toString());
                 output = new ObjectOutputStream(client.getOutputStream());

@@ -1,9 +1,11 @@
 package com.hs.easyrpc.demo.test;
 
 import com.hs.easyrpc.core.easyrpcclient.EasyRpcClient;
+import com.hs.easyrpc.core.easyrpcclient.handler.SimpleSocketHandler;
 import com.hs.easyrpc.demo.model.User;
 import com.hs.easyrpc.demo.model.protocol.Greeting;
 import com.hs.easyrpc.demo.services.HelloService;
+import com.hs.easyrpc.demo.services.LoginService;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,16 +22,20 @@ public class RPCClientTest {
 //        }
 
 //        SimpleSocketHandler socketInvocationHandler1 = new SimpleSocketHandler(HelloService.class,new InetSocketAddress("localhost", 8088));
-        HelloService helloService = EasyRpcClient.getProxy(HelloService.class,new InetSocketAddress("localhost", 8088));
-        for(int i =1;i<10;i++){
-            System.out.println(helloService.aaa(new User("huangsheng",""+i)));
-        }
-//
-//        SimpleSocketHandler socketInvocationHandler2 = new SimpleSocketHandler(LoginService.class,new InetSocketAddress("localhost", 8088));
-//        LoginService loginService = EasyRpcClient.getProxy(LoginService.class,socketInvocationHandler2);
+//        HelloService helloService = EasyRpcClient.getProxy(HelloService.class,new InetSocketAddress("localhost", 8088));
 //        for(int i =1;i<10;i++){
-//            System.out.println(loginService.login(new User("huangsheng",""+i)));
+////            System.out.println(helloService.Say("Fuck"));
+//
+////            System.out.println(helloService.aaa(new User("huangsheng",""+i)));
 //        }
+//
+        SimpleSocketHandler socketInvocationHandler2 = new SimpleSocketHandler(LoginService.class,new InetSocketAddress("localhost", 8088));
+        LoginService loginService = EasyRpcClient.getProxy(LoginService.class,new InetSocketAddress("localhost", 8088));
+        for(int i =1;i<10;i++){
+            System.out.println(loginService.login(new User("123", "123")));
+//            System.out.println(loginService.logout("asd"));
+
+        }
     }
 
 

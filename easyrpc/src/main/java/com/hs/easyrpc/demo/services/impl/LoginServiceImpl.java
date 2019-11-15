@@ -7,8 +7,13 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String login(User user) {
         if (user.getName().equals(user.getPassword()))
-            return "YES";
+            return user.getName()+ " YES";
         else
             return "NO";
+    }
+
+    @Override
+    public String logout(String msg) {
+        return "logout";
     }
 }

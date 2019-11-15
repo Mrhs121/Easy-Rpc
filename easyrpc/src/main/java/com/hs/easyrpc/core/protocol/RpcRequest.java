@@ -1,5 +1,10 @@
 package com.hs.easyrpc.core.protocol;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.hs.easyrpc.core.utils.SerializeUtil;
+import com.hs.easyrpc.demo.model.User;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -57,7 +62,16 @@ public class RpcRequest implements Serializable{
     }
 
     public Object[] getParameters() {
-        return parameters;
+        Object[] newarguments = new Object[this.getParameterTypes().length];
+        for(int i=0;i<parameters.length;i++){
+            if(parameters[i] instanceof  JSONObject) {
+                Object parameter = JSON.toJavaObject((JSONObject) parameters[i], parameterTypes[i]);
+                newarguments[i] = parameter;
+            } else {
+                newarguments[i] = parameters[i];
+            }
+        }
+       return newarguments;
     }
 
     public void setParameters(Object[] parameters) {
@@ -73,6 +87,12 @@ public class RpcRequest implements Serializable{
                 ", parameterTypes=" + Arrays.toString(parameterTypes) +
                 ", parameters=" + Arrays.toString(parameters) +
                 '}';
+    }
+
+    public void print(){
+        System.out.println("参数类型 ："+ parameters[0]);
+//        User user = SerializeUtil.decode(parameters[0],User.class);
+//        System.out.println(this.parameters[0]);
     }
 }
 
