@@ -1,6 +1,6 @@
 package com.hs.demo;
 //
-//import com.hs.easyrpc.core.common.CommonStrings;
+//import com.hs.easyrpc.core.common.Constant;
 //import com.hs.easyrpc.demo.model.User;
 //import org.apache.avro.file.DataFileReader;
 //import org.apache.avro.file.DataFileWriter;
@@ -32,7 +32,7 @@ package com.hs.demo;
 //
 //        DatumWriter<User> userDatumWriter = new SpecificDatumWriter<>(User.class);
 //        DataFileWriter<User> dataFileWriter = new DataFileWriter<>(userDatumWriter);
-//        dataFileWriter.create(user1.getSchema(), new File(CommonStrings.AVROS_PATH +"users.avro"));
+//        dataFileWriter.create(user1.getSchema(), new File(Constant.AVROS_PATH +"users.avro"));
 //
 //        dataFileWriter.append(user1);
 //        dataFileWriter.append(user2);
@@ -45,7 +45,7 @@ package com.hs.demo;
 //    public static void deserializing() throws IOException {
 //        // Deserialize Users from disk
 //        DatumReader<User> userDatumReader = new SpecificDatumReader<>(User.class);
-//        DataFileReader<User> dataFileReader = new DataFileReader<User>(new File(CommonStrings.AVROS_PATH +"users.avro"), userDatumReader);
+//        DataFileReader<User> dataFileReader = new DataFileReader<User>(new File(Constant.AVROS_PATH +"users.avro"), userDatumReader);
 //        User user = null;
 //        while (dataFileReader.hasNext()) {
 //            user = dataFileReader.next(user);

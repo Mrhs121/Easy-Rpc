@@ -1,6 +1,6 @@
 package com.hs.easyrpc.core.easyrpcclient.handler;
 
-import com.hs.easyrpc.core.common.CommonStrings;
+import com.hs.easyrpc.core.common.Constant;
 import com.hs.easyrpc.core.protocol.RpcRequest;
 import com.hs.easyrpc.core.protocol.RpcResponse;
 import com.hs.easyrpc.core.utils.SerializeUtil;
@@ -58,7 +58,7 @@ public class SimpleSocketHandler implements InvocationHandler {
             input = new ObjectInputStream(socket.getInputStream());
             RpcResponse response = (RpcResponse) input.readObject();
 
-            if (response.getError().equals(CommonStrings.RESPONSE_OK))
+            if (response.getError().equals(Constant.RESPONSE_OK))
                 return response.getResult();
             else
                 System.out.println(response.getError());

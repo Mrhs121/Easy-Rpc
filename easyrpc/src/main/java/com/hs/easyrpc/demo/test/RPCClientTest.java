@@ -22,20 +22,21 @@ public class RPCClientTest {
 //        }
 
 //        SimpleSocketHandler socketInvocationHandler1 = new SimpleSocketHandler(HelloService.class,new InetSocketAddress("localhost", 8088));
-//        HelloService helloService = EasyRpcClient.getProxy(HelloService.class,new InetSocketAddress("localhost", 8088));
-//        for(int i =1;i<10;i++){
-////            System.out.println(helloService.Say("Fuck"));
+        HelloService helloService = EasyRpcClient.getProxy(HelloService.class);
+        for(int i =1;i<10;i++){
+            System.out.println(helloService.Say("Fuck"));
+//            System.out.println(helloService.aaa(new User("huangsheng",""+i)));
+        }
 //
-////            System.out.println(helloService.aaa(new User("huangsheng",""+i)));
-//        }
-//
-        SimpleSocketHandler socketInvocationHandler2 = new SimpleSocketHandler(LoginService.class,new InetSocketAddress("localhost", 8088));
-        LoginService loginService = EasyRpcClient.getProxy(LoginService.class,new InetSocketAddress("localhost", 8088));
+
+        LoginService loginService = EasyRpcClient.getProxy(LoginService.class);
         for(int i =1;i<10;i++){
             System.out.println(loginService.login(new User("123", "123")));
 //            System.out.println(loginService.logout("asd"));
 
         }
+
+
     }
 
 

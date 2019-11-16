@@ -1,11 +1,11 @@
 package com.hs.easyrpc.core.easyrpcserver.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.hs.easyrpc.core.common.CommonStrings;
+import com.hs.easyrpc.core.common.Constant;
 import com.hs.easyrpc.core.easyrpcserver.EasyRpcServer;
 import com.hs.easyrpc.core.protocol.RpcRequest;
 import com.hs.easyrpc.core.protocol.RpcResponse;
+import com.hs.easyrpc.core.registerserver.RegisterServer;
+import com.hs.easyrpc.core.registerserver.impl.SimpleRegisterServer;
 import com.hs.easyrpc.core.utils.SerializeUtil;
 
 import java.io.*;
@@ -21,7 +21,9 @@ public class SimpleSocketServer implements EasyRpcServer {
 
     private  ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-    private static final HashMap<String, Class> serviceRegistry = new HashMap<String, Class>();
+    private static final HashMap<String, Class> services = new HashMap<String, Class>();
+
+    private static RegisterServer registerServer = SimpleRegisterServer.getInstance();
 
     private  boolean isRunning = false;
 
@@ -45,12 +47,22 @@ public class SimpleSocketServer implements EasyRpcServer {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 向 服务注册中心 注册服务，需要上报自己的地址与端口
+     * @param serviceInterface
+     * @param impl
+     */
     @Override
-    public void register(Class serviceInterface, Class impl) {
-        // 服务注册准备写成动态的，可以动态的上线和下线服务 zk
-        // 后面会将服务的信息注册在zk中
-        System.out.println("注册 "+serviceInterface.getCanonicalName());
-        serviceRegistry.put(serviceInterface.getName(),impl);
+    public void registerService(Class serviceInterface, Class impl) {
+        System.out.println("向服务中心注册 "+serviceInterface.getCanonicalName());
+        services.put(serviceInterface.getName(),impl);
+        registerServer.register(serviceInterface.getName(), "localhost", this.port);
+    }
+
+    @Override
+    public void offlineService(Class serviceInterface) {
+        System.out.println("服务下线 +"+serviceInterface);
     }
 
     @Override
@@ -64,6 +76,7 @@ public class SimpleSocketServer implements EasyRpcServer {
     }
     @Override
     public void start() throws  IOException{
+        // 首先需要讲服务的地址与端口上报给 服务注册中心
         isRunning = true;
         server = new ServerSocket();
         server.bind(new InetSocketAddress(this.port));
@@ -120,17 +133,7 @@ public class SimpleSocketServer implements EasyRpcServer {
                     System.out.println("obj : "+o.getClass()+ "data : "+o);
                 }
 
-//                Object[] newarguments = new Object[request.getParameterTypes().length];
-//                for(int i=0;i<arguments.length;i++){
-//                    if(arguments[i] instanceof  JSONObject) {
-//                        Object parameter = JSON.toJavaObject((JSONObject) arguments[i], parameterTypes[i]);
-//                        newarguments[i] = parameter;
-//                    } else {
-//                        newarguments[i] = arguments[i];
-//                    }
-//                }
-
-                Class serviceClass = serviceRegistry.get(serviceName);
+                Class serviceClass = services.get(serviceName);
                 if (serviceClass == null) {
                     response = new RpcResponse(request.getRequestId(), serviceName + " not found",null);
                     output = new ObjectOutputStream(client.getOutputStream());
@@ -142,8 +145,7 @@ public class SimpleSocketServer implements EasyRpcServer {
 
                 Object result = method.invoke(serviceClass.newInstance(), arguments);
 
-                response = new RpcResponse(request.getRequestId(), CommonStrings.RESPONSE_OK,result);
-                //System.out.println(response.toString());
+                response = new RpcResponse(request.getRequestId(), Constant.RESPONSE_OK,result);
                 output = new ObjectOutputStream(client.getOutputStream());
                 output.writeObject(response);
 
