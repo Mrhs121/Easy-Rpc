@@ -40,29 +40,13 @@ public class SimpleRegisterServer implements RegisterServer {
             os.writeObject(services);
             os.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-//        try {
-//            String content = "A cat will append to the end of the file";
-//            File file = new File("services.txt");
-//            if (!file.exists())
-//                file.createNewFile();
-//            //使用true，即进行append file
-//            FileWriter fileWritter = new FileWriter(file.getName(), true);
-//            BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
-//            bufferWritter.write(serviceName+","+ip+","+port);
-//            bufferWritter.close();
-//            System.out.println("finish");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
 
@@ -75,18 +59,14 @@ public class SimpleRegisterServer implements RegisterServer {
     public HashMap<String, Service> discover() {
         HashMap<String,Service> _services = new HashMap<String,Service>();
         try {
-            ObjectInputStream is = new ObjectInputStream(
-                    new FileInputStream("services.txt"));
-//            ArrayList<StudentBean> list = new ArrayList<StudentBean>();
+            ObjectInputStream is = new ObjectInputStream( new FileInputStream("services.txt"));
             _services = (HashMap<String,Service>) is.readObject();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
         return _services;
