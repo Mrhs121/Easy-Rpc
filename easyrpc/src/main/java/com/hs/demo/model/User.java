@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.hs.easyrpc.demo.model;
+package com.hs.demo.model;
 
 
 import java.io.Serializable;

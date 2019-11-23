@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.hs.easyrpc.demo.model.protocol;
+package com.hs.demo.model.protocol;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Greeting extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -1961483725036949998L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"com.hs.easyrpc.demo.model.protocol\",\"fields\":[{\"name\":\"message\",\"type\":\"string\"},{\"name\":\"password\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Greeting\",\"namespace\":\"com.hs.demo.model.protocol\",\"fields\":[{\"name\":\"message\",\"type\":\"string\"},{\"name\":\"password\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -127,8 +127,8 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new Greeting RecordBuilder.
    * @return A new Greeting RecordBuilder
    */
-  public static com.hs.easyrpc.demo.model.protocol.Greeting.Builder newBuilder() {
-    return new com.hs.easyrpc.demo.model.protocol.Greeting.Builder();
+  public static com.hs.demo.model.protocol.Greeting.Builder newBuilder() {
+    return new com.hs.demo.model.protocol.Greeting.Builder();
   }
 
   /**
@@ -136,8 +136,8 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new Greeting RecordBuilder
    */
-  public static com.hs.easyrpc.demo.model.protocol.Greeting.Builder newBuilder(com.hs.easyrpc.demo.model.protocol.Greeting.Builder other) {
-    return new com.hs.easyrpc.demo.model.protocol.Greeting.Builder(other);
+  public static com.hs.demo.model.protocol.Greeting.Builder newBuilder(com.hs.demo.model.protocol.Greeting.Builder other) {
+    return new com.hs.demo.model.protocol.Greeting.Builder(other);
   }
 
   /**
@@ -145,8 +145,8 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new Greeting RecordBuilder
    */
-  public static com.hs.easyrpc.demo.model.protocol.Greeting.Builder newBuilder(com.hs.easyrpc.demo.model.protocol.Greeting other) {
-    return new com.hs.easyrpc.demo.model.protocol.Greeting.Builder(other);
+  public static com.hs.demo.model.protocol.Greeting.Builder newBuilder(com.hs.demo.model.protocol.Greeting other) {
+    return new com.hs.demo.model.protocol.Greeting.Builder(other);
   }
 
   /**
@@ -167,7 +167,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.hs.easyrpc.demo.model.protocol.Greeting.Builder other) {
+    private Builder(com.hs.demo.model.protocol.Greeting.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.message)) {
         this.message = data().deepCopy(fields()[0].schema(), other.message);
@@ -183,7 +183,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Greeting instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.hs.easyrpc.demo.model.protocol.Greeting other) {
+    private Builder(com.hs.demo.model.protocol.Greeting other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.message)) {
         this.message = data().deepCopy(fields()[0].schema(), other.message);
@@ -208,7 +208,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'message'.
       * @return This builder.
       */
-    public com.hs.easyrpc.demo.model.protocol.Greeting.Builder setMessage(java.lang.CharSequence value) {
+    public com.hs.demo.model.protocol.Greeting.Builder setMessage(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.message = value;
       fieldSetFlags()[0] = true;
@@ -228,7 +228,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'message' field.
       * @return This builder.
       */
-    public com.hs.easyrpc.demo.model.protocol.Greeting.Builder clearMessage() {
+    public com.hs.demo.model.protocol.Greeting.Builder clearMessage() {
       message = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -247,7 +247,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'password'.
       * @return This builder.
       */
-    public com.hs.easyrpc.demo.model.protocol.Greeting.Builder setPassword(java.lang.CharSequence value) {
+    public com.hs.demo.model.protocol.Greeting.Builder setPassword(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.password = value;
       fieldSetFlags()[1] = true;
@@ -267,7 +267,7 @@ public class Greeting extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'password' field.
       * @return This builder.
       */
-    public com.hs.easyrpc.demo.model.protocol.Greeting.Builder clearPassword() {
+    public com.hs.demo.model.protocol.Greeting.Builder clearPassword() {
       password = null;
       fieldSetFlags()[1] = false;
       return this;

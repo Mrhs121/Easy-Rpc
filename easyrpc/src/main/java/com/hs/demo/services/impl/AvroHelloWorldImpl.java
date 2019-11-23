@@ -1,7 +1,7 @@
-package com.hs.easyrpc.demo.services.impl;
+package com.hs.demo.services.impl;
 
-import com.hs.easyrpc.demo.model.protocol.AvroHelloWorld;
-import com.hs.easyrpc.demo.model.protocol.Greeting;
+import com.hs.demo.model.protocol.AvroHelloWorld;
+import com.hs.demo.model.protocol.Greeting;
 import org.apache.avro.AvroRemoteException;
 
 public class AvroHelloWorldImpl implements AvroHelloWorld {

@@ -17,7 +17,7 @@ public class EasyRpcClient {
 
     public static RegisterServer simpleServer = SimpleRegisterServer.getInstance();
 
-    public static void regularDiscover(){
+    public static void discoverServer(){
         // 周期性的向 服务注册中心 请求最新的service地址
         services.clear();
         services = simpleServer.discover();
@@ -29,7 +29,7 @@ public class EasyRpcClient {
         // 客户端定时向服务中心请求最新的服务列表
 
 
-        regularDiscover();
+        discoverServer();
 
         return (T) Proxy.newProxyInstance
                 (

@@ -1,14 +1,12 @@
-package com.hs.easyrpc.demo.test;
+package com.hs.demo.test;
 
 import com.hs.easyrpc.core.easyrpcclient.EasyRpcClient;
-import com.hs.easyrpc.core.easyrpcclient.handler.SimpleSocketHandler;
-import com.hs.easyrpc.demo.model.User;
-import com.hs.easyrpc.demo.model.protocol.Greeting;
-import com.hs.easyrpc.demo.services.HelloService;
-import com.hs.easyrpc.demo.services.LoginService;
+import com.hs.demo.model.User;
+import com.hs.demo.model.protocol.Greeting;
+import com.hs.demo.services.HelloService;
+import com.hs.demo.services.LoginService;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
 
 public class RPCClientTest {
 

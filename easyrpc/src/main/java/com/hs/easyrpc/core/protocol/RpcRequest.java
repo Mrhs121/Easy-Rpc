@@ -2,8 +2,6 @@ package com.hs.easyrpc.core.protocol;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.hs.easyrpc.core.utils.SerializeUtil;
-import com.hs.easyrpc.demo.model.User;
 
 import java.io.Serializable;
 import java.util.Arrays;

@@ -1,5 +1,5 @@
 {
-  "namespace": "com.hs.easyrpc.demo.model.protocol",
+  "namespace": "com.hs.demo.model.protocol",
   "protocol": "AvroHelloWorld",
   "doc": "Protocol Greetings",
 

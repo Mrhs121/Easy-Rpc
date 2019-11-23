@@ -1,6 +1,4 @@
-package com.hs.easyrpc.demo.test;
-
-import com.hs.easyrpc.core.utils.SerializeUtil;
+package com.hs.demo.test;
 
 import java.io.IOException;
 

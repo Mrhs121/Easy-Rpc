@@ -1,13 +1,9 @@
-package com.hs.easyrpc.demo.test;
+package com.hs.demo.test;
 
 import com.hs.easyrpc.core.easyrpcserver.EasyRpcServer;
 import com.hs.easyrpc.core.easyrpcserver.impl.SimpleSocketServer;
-import com.hs.easyrpc.demo.model.protocol.AvroHelloWorld;
-import com.hs.easyrpc.demo.services.HelloService;
-import com.hs.easyrpc.demo.services.LoginService;
-import com.hs.easyrpc.demo.services.impl.AvroHelloWorldImpl;
-import com.hs.easyrpc.demo.services.impl.HelloServiceImpl;
-import com.hs.easyrpc.demo.services.impl.LoginServiceImpl;
+import com.hs.demo.services.LoginService;
+import com.hs.demo.services.impl.LoginServiceImpl;
 
 import java.io.IOException;
 

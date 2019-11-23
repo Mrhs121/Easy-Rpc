@@ -1,7 +1,7 @@
-package com.hs.easyrpc.demo.services.impl;
+package com.hs.demo.services.impl;
 
-import com.hs.easyrpc.demo.model.User;
-import com.hs.easyrpc.demo.services.LoginService;
+import com.hs.demo.model.User;
+import com.hs.demo.services.LoginService;
 
 public class LoginServiceImpl implements LoginService {
     @Override

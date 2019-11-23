@@ -1,8 +1,6 @@
-package com.hs.easyrpc.demo.services;
+package com.hs.demo.services;
 
-import com.hs.easyrpc.demo.model.User;
-
-import java.security.PublicKey;
+import com.hs.demo.model.User;
 
 public interface HelloService {
     public String Say(String msg);

@@ -1,9 +1,4 @@
-package com.hs.easyrpc.demo.test;
-
-import com.alibaba.fastjson.JSON;
-import com.hs.easyrpc.core.protocol.RpcRequest;
-import com.hs.easyrpc.core.utils.SerializeUtil;
-import com.hs.easyrpc.demo.model.protocol.AvroHelloWorld;
+package com.hs.demo.test;
 
 public class Test {
 
