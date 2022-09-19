@@ -22,7 +22,7 @@ public class Utils {
 
     public static int byte2int(byte[] res) {
         // 一个byte数据左移24位变成0x??000000，再右移8位变成0x00??0000
-
+        // sout("test")
         int targets = (res[0] & 0xff) | ((res[1] << 8) & 0xff00) // | 表示安位或
                 | ((res[2] << 24) >>> 8) | (res[3] << 24);
         return targets;
